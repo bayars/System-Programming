@@ -1,0 +1,37 @@
+Programlama çalısması
+
+- Aşağıda belirtilen isimde bir klasör oluşturunuz:
+    "İsminiz-Soyisminiz-Lab2"
+- Yeni oluşturduğunuz klasöre gidiniz.
+- Aşağıda belirtilen özelliklere sahip bir C programı yazınız.
+ - Programınızın kaynak dosyasının ismi "prog1.c" olmalı.
+ - Programınızın çalıştırılabilir halinin ismi "prog1" olmalı.
+ - Programınız aşağıda adımları gerçekleştirecektir.
+  - Program tam olarak 4 girdi alacaktır.
+  - Girdi sayısı 4 değilse, programınızın bir uyarı mesajı verecek ve sonlanacaktır.
+  - 4 girdi verildiğinde programınızın verilen girdileri her biri bir satırda şekilde listeleyecek ve sonlanacaktır.
+
+
+Örnek:
+./prog1 abc def
+Tam 4 girdi verilmelidir!
+2 girdi verdiniz.
+
+./prog1
+Tam 4 girdi verilmelidir!
+0 girdi verdiniz.
+
+./prog1 abc def ghi jkl
+1. girdi: abc
+2. girdi: def
+3. girdi: ghi
+4. girdi: jkl
+
+Yardım:
+- Programınıza dışarıdan girdi almak için aşağıdaki yapıyı kullanabilirsiniz.
+ int main(int argc, char *argv[])
+ - program çalıştığında "argc" toplam girdi sayısını (programın ismi ile birlikte), "argv" dizisi ise girdileri (programın ismi ile birlikte) içerecektir.
+
+- Programınızı aşağıda belirtilen şekilde derleyebilirsiniz.
+ gcc prog1.c -o prog1
+ - Bu komut "prog1.c" kaynak dosyasını derleyecek ve "prog1" isimli çalıştırılabilir dosya oluşturacaktır.

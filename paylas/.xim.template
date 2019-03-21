@@ -1,0 +1,204 @@
+#!/bin/bash
+#
+# $Id: xim,v 1.21 2004/09/30 10:27:12 mfabian Exp $
+#
+# Copyright © 2001 SuSE GmbH Nuernberg, Germany
+#
+# Mike Fabian <mfabian@suse.de>, 2000, 2001, 2002, 2004
+#
+# This program comes with ABSOLUTELY NO WARRANTY; it may be copied or modified
+# under the terms of the GNU General Public License version 2 as published by
+# the Free Software Foundation.
+
+
+# /etc/X11/xim is used to start a default input method.
+
+# /etc/X11/xim is sourced by ~/.xinitrc or ~/.xsession unless
+# you have a file ~/.xim in your home directory. If you have
+# a ~/.xim file, it is sourced instead.
+# Therefore, if you don't like the default input method,
+# just create a file ~/.xim in your home directory containing
+# the necessary lines to start your preferred input method.
+# Usually you need only a few lines, /etc/X11/xim is only so
+# long because it tries to find a nice default depending
+# on the language and the installed input methods.
+
+# For example, if you want to use "scim" as your input method,
+# it is enough to have the following 5 lines (and nothing else)
+# in your ~/.xim file:
+
+#       export XMODIFIERS="@im=SCIM"
+#       export GTK_IM_MODULE=scim
+#       export QT_IM_SWITCHER=imsw-multi
+#       export QT_IM_MODULE=scim
+#       scim -d 
+
+# Determine the LC_CTYPE locale category setting
+tmplang=${LC_ALL-${LC_CTYPE-${LANG-en_US}}}
+
+# make sure we have all the necessary directories in the path to find
+# the input servers and the tools like "pidof" which are used below
+# (Ami is usually in /opt/gnome/bin!):
+OLD_PATH=$PATH
+PATH=/sbin:/usr/sbin:/bin:/usr/bin:/usr/X11R6/bin:/usr/local/sbin:/usr/local/bin:/opt/kde3/bin:/opt/gnome/bin:/usr/lib/im/locale/ja/atokserver
+
+start_scim () {
+            export XMODIFIERS=@im=SCIM
+            export GTK_IM_MODULE=scim
+            export QT_IM_SWITCHER=imsw-multi
+            export QT_IM_MODULE=scim
+            case $WINDOWMANAGER in
+                *kde)
+                    if ! type -p skim > /dev/null 2>&1 \
+		      || grep -i -q "Autostart.*=.*false" $HOME/.kde/share/config/skimrc
+                    then
+                        scim -d
+                    else
+		        # skim will be  used. But we don't start it here,
+			# we rely on the KDE autostart
+			# mechanism used in the skim package instead.
+                        # skim -d
+			:
+                    fi
+                ;;
+                *)
+                    scim -d          
+                ;;
+            esac
+}
+
+case $tmplang in 
+    ja*) # Japanese
+        # ATOK-X?
+        if type -p atokx_client > /dev/null 2>&1 \
+           && pidof /usr/lib/im/htt > /dev/null 2>&1 \
+           && pidof atokmngdaemon > /dev/null 2>&1 
+        then
+            # setting the variable USE_XOPENIM to something not empty
+            # is needed to make ATOK-X work with OpenOffice:
+            export USE_XOPENIM=yes
+            export XMODIFIERS="@im=htt"
+            export GTK_IM_MODULE=xim
+            export QT_IM_SWITCHER=imsw-multi
+            export QT_IM_MODULE=xim
+            LANG=ja_JP LC_ALL=ja_JP atokx_client &
+        elif type -p scim > /dev/null 2>&1 \
+            && rpm -q uim scim-uim > /dev/null 2>&1
+        then
+            start_scim
+        # WXG? 
+        elif type -p kinput2 > /dev/null 2>&1 \
+            &&  pidof wxgserver > /dev/null 2>&1 
+        then
+            export XMODIFIERS="@im=kinput2"
+            export GTK_IM_MODULE=xim
+            export QT_IM_SWITCHER=imsw-multi
+            export QT_IM_MODULE=xim
+            kinput2 -xim -kinput -canna -cannaserver unix &
+        # Canna?
+        elif type -p kinput2 > /dev/null 2>&1 \
+             &&  pidof cannaserver > /dev/null 2>&1 
+        then
+            export XMODIFIERS="@im=kinput2"
+            export GTK_IM_MODULE=xim
+            export QT_IM_SWITCHER=imsw-multi
+            export QT_IM_MODULE=xim
+            kinput2 -xim -kinput -canna -cannaserver unix &
+        # Wnn6?
+        elif type -p kinput2 > /dev/null 2>&1 \
+             && pidof jserver > /dev/null 2>&1 \
+             && test -d /usr/local/OMRONWnn6
+        then
+            export XMODIFIERS="@im=kinput2"
+            export GTK_IM_MODULE=xim
+            export QT_IM_SWITCHER=imsw-multi
+            export QT_IM_MODULE=xim
+            kinput2 -xim -kinput -wnn \
+                     -wnnenvrc6 /usr/local/OMRONWnn6/wnn6linux/ja_JP/wnnenvrc &
+        # FreeWnn?
+        elif type -p kinput2 > /dev/null 2>&1 \
+             && pidof jserver > /dev/null 2>&1
+        then
+            export XMODIFIERS="@im=kinput2"
+            export GTK_IM_MODULE=xim
+            export QT_IM_SWITCHER=imsw-multi
+            export QT_IM_MODULE=xim
+            kinput2 -xim -kinput -wnn &
+        fi
+    ;;
+    ko*) # Korean
+        if type -p scim > /dev/null 2>&1 \
+           && rpm -q scim-hangul > /dev/null 2>&1
+        then
+           start_scim
+        elif type -p ami > /dev/null 2>&1 ; then
+            export XMODIFIERS="@im=Ami"
+            export GTK_IM_MODULE=xim
+            export QT_IM_SWITCHER=imsw-multi
+            export QT_IM_MODULE=xim
+            case $WINDOWMANAGER in
+                *kde|*windowmaker|*wmaker)
+                    ami -wm -wait &
+                ;;
+                *)
+                    ami &
+                ;;
+            esac
+        fi
+    ;;
+    zh_HK*) # Traditional Chinese for Hongkong
+        if type -p scim > /dev/null 2>&1 \
+            && rpm -q scim-tables-zh > /dev/null 2>&1
+        then
+            start_scim
+        elif type -p xcin > /dev/null 2>&1
+        then
+            export XMODIFIERS="@im=xcin-zh_HK" 
+            LANG=zh_HK LC_ALL=zh_HK xcin &
+        fi
+    ;;    
+    zh_TW*) # Traditional Chinese
+        if type -p scim > /dev/null 2>&1 \
+            && rpm -q scim-tables-zh > /dev/null 2>&1
+        then
+            start_scim
+        elif type -p xcin > /dev/null 2>&1 ; then
+            export XMODIFIERS="@im=xcin-zh_TW" 
+            export GTK_IM_MODULE=xim
+            export QT_IM_SWITCHER=imsw-multi
+            export QT_IM_MODULE=xim
+            LANG=zh_TW LC_ALL=zh_TW xcin &
+        fi
+    ;;
+    zh_CN*) # Simplified Chinese
+        if type -p scim > /dev/null 2>&1 ; then
+            start_scim
+        elif type -p chinput > /dev/null 2>&1 ; then
+            export XMODIFIERS="@im=Chinput"
+            export GTK_IM_MODULE=xim
+            export QT_IM_SWITCHER=imsw-multi
+            export QT_IM_MODULE=xim
+            LANG=zh_CN LC_ALL=zh_CN chinput
+        elif type -p xcin > /dev/null 2>&1 ; then
+            export XMODIFIERS="@im=xcin-zh_CN" 
+            export GTK_IM_MODULE=xim
+            export QT_IM_SWITCHER=imsw-multi
+            export QT_IM_MODULE=xim
+            LANG=zh_CN LC_ALL=zh_CN xcin &
+        fi
+    ;;
+    *)  # all other languages:
+    
+        # probably an XIM server is not needed.
+        # Nevertheless it may be useful to set XMODIFIER="@im=local"
+        # because "@im=local" means "use compose and dead-keys" and
+        # some programs will use compose and dead-keys only if XMODIFIERS
+        # is set to either "@im=local" or "@im=none".
+        
+        export XMODIFIERS="@im=local"
+        
+    ;;
+esac
+
+# probably better to restore the old value of PATH...
+PATH=$OLD_PATH

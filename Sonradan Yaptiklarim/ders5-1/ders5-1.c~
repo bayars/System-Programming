@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
+
+int main(){
+
+  char buf[4096];
+
+  int fd = open("safa.txt", O_CREAT, O_RDWR);
+  int t = sprintf(buf,"Merhaba secim aksami");
+  write(fd,buf,42);
+  close(fd);
+
+  return 0;
+}

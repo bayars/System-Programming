@@ -1,5 +1,5 @@
 /*
-
+  
 echo "Bu bir metin dosyasıdır. Benim tarafımdan\n yazılmıştır. \n" > safa
 
 istatistik dosyasının içeriği =>

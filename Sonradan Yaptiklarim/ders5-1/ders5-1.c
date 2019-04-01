@@ -13,6 +13,7 @@ int main(){
   int t = sprintf(buf,"Merhaba secim aksami %d \n",psid);
   //fchmod(fd,0444);
   fchown(fd,0,0);
+  link("./safa.txt1","./olsa.txt");
   write(fd,buf,t); 
   close(fd);
 

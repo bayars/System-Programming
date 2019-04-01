@@ -32,5 +32,16 @@ int main(){
   /* ### DOSYA VEYA DIZIN SILMEK ICIN ###
   remove("./olsa.txt");
   */
+  /* ### DIZIN VEYA DOSYA ISIM DEGISIKLIGI ###
+  if(rename("safa.txt1","safa") == -1){
+  printf("Olusturma hatali safa isminde dizin bulunmaktadir");
+  } 
+  ### Izin degisikligi icin w+x haklarina sahip olunmalidir. ###
+  */
+  /* ### SEMBOLIK LINK OLUSTURMAK ICIN ###
+  if(symlink("safa","./temp") == -1){
+    printf("Sembolik link olusturulamadi");
+  }
+  */
   return 0;
 }

@@ -19,7 +19,7 @@ int main(int argc,char * argv[]){
     }
     z += 1;
   }
-  printf("Kelime saysisi %d\n",po+1);
+  printf("\nKelime saysisi %d\n",po+1);
   printf("Harf sayisi %d\n",z);
   fclose(op);
 }

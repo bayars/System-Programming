@@ -1,0 +1,18 @@
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
+
+
+int main(){
+
+  FILE fd = fopen("safa","wb");
+  int z = sprintf(buf,"Merhaba ben safa");
+  fwrite(fd,buf);
+  fclose(fd);
+
+  
+
+
+}

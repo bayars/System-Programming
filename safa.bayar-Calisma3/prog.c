@@ -49,6 +49,5 @@ int main(int argc,char * argv[]){
 	fputs(buf,in1);
 	fclose(in1);
 	fclose(in);
-	
 }
 

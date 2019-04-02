@@ -22,7 +22,7 @@ int main(){
   /* } */
   /* printf("\n"); */
   while((c = getc(tl)) != EOF){
-    printf("%c",c);		/* Bu durumda da ayni sekilde bastirmaktadir. */
+    printf("%c",c);		/* Bu durumda da dosya icinde ki gibi bastirmaktadir. */
   }
   fclose(tl);
 

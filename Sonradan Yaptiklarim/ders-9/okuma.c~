@@ -4,15 +4,16 @@
 #include <fcntl.h>
 #include <unistd.h>
 
+
 int main(int argc,char * argv[]){
 
-  /* int t = 20; */
-  /* printf(" %o ",t); */
   char buf[4096];
+  int c;
+  FILE * op = fopen(argv[1],"r");
 
-  FILE * fl = fopen(argv[1],"w");
-  int t = sprintf(buf,"Temel denizi tek");
-  fputs(buf,fl);
-  
-  fclose(fl);
+  while((c = getc(op)) == EOF){
+    printf("%c",c);
+  }
+
+  fclose(op);
 }

@@ -3,7 +3,6 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
-
 // ### Ders icin kutuphaneler
 #include <utime.h>
 #include <dirent.h>

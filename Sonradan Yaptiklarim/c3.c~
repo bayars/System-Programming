@@ -1,0 +1,14 @@
+#include <stdio.h>
+#include <sys/types.h>
+#include <unistd.h>
+
+
+int main(){
+
+  int ppid;
+  if(ppid = fork()){
+    printf("Hatasiz bir fork islemi\n");
+    printf("benim pid'im : %d . Parent pid'i %d\n",getpid(),getppid());
+  }
+
+}

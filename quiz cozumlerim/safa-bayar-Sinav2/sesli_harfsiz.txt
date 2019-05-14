@@ -1,0 +1,6 @@
+b lk str.
+b knc str.
+b cnc str.
+b drdnc str.
+b bsnc str.
+B ltnc str.

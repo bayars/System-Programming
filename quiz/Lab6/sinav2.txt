@@ -1,0 +1,42 @@
+Yapılacak adımlar
+- Bu çalışmada standart I/O kütüphanesi kullanılacaktır.
+- Uzaktan erişim yapılan bilgisayarda yanda belirtilen isimde bir klasör oluşturunuz “isminiz-soyİsminiz-Sinav2”
+- Yeni oluşturulan klasöre gidiniz.
+- Aşağıda belirtilen operasyonları gerçekleştiren “sinav2” isimli bir C programı yazınız. Programınızın kaynak dosyasını “sinav2.c” ismi ile kaydediniz.
+	- Programınız argüman olarak bir dosya ismi alacaktır.
+		- Dosya ismi belirtilmez ise, anlamlı bir hata mesajı vererek program sonlanacaktır.
+	- Daha sonra programınız “cift_satirlar.txt” isminde bir dosya 	oluşturulacaktır.
+		- Bu dosya kullanıcı tarafından belirtilen girdi dosyasındaki cift sayılı satırları içerecektir.
+	- Daha sonra programınız “sesli_harfsiz.txt” isminde bir dosya 	oluşturulacaktır.
+		- Bu dosya kullanıcı tarafından belirtilen girdi dosyasındaki sesli harfler dışındaki karakterleri içerecektir.
+
+- Son olarak programınız açık olan bütün dosyaları kapatarak sonlanacaktır.
+
+Örnek: Girdi olarak verilen dosyanın içeriği aşağıdaki gibi ise:
+
+bu ilk satir.
+bu ikinci satir.
+bu ucuncu satir.
+bu dorduncu satir.
+bu besince satir.
+Bu altinci satir.
+
+“cift_satirlar.txt” dosyası şu metni içerecektir:
+
+bu ikinci satir.
+bu dorduncu satir.
+Bu altinci satir.
+
+“sesli_harfsiz.txt” dosyası şu metni içerecektir.
+
+b lk str.
+b knc str.
+b cnc str.
+b drdnc str.
+b bsnc str.
+
+Notlar: 
+- Girdi dosyalarının sadece İngilizce alfabesinde bulunan küçük harfleri içereceğini farzedebilirsiniz.
+- Bir girdi dosyasından yeni bir satır okumak için aşağıdaki komutu kullanabilirsiniz:
+fgets(satir,256,infile)
+Belirtilen komut “infile” dosya nesnesi ile açılan dosyadan bir satırı “satir” önbelleğine okur. Dosya sonuna gelindiğinde yukarıdaki fonksiyon NULL döner.

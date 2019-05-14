@@ -1,0 +1,97 @@
+Sistem Programlama
+
+Lab Çalışması
+
+- Oncelikle isim-soyisim-Lab7 isminde bir klasör oluşturunuz.
+
+- Bu klasörün içine giriniz.
+
+Yapılacak adımlar (1)
+
+- 
+
+- Bu çalışmada dinamik hafiza islemleri uygulanacaktir.
+
+- Aşağıda belirtilen operasyonları gerçekleştiren bir C programı yazınız. Dosya adi "calisma_1.c" olmalidir.
+
+- Programınız; 
+
+- Kullanicidan bir tam sayi alacaktir (int eleman_sayisi).
+
+- eleman_sayisi boyutunda malloc kullanarak bir tam sayi dizisi olusturacaktir (int *ptr).
+
+- malloc basarili olamazsa bir hata mesaji vererek sonlanacaktir.
+
+- Kullanicidan eleman_sayisi kadar tam sayi isteyecek ve olusturdugu diziye kaydedecektir.
+
+- Dizideki butun sayilari toplayacak ve toplami ekrana yazacaktir.
+
+- Almis oldugu hafiza alanini iade edip sonlanacaktir.
+
+
+
+Ornek: 
+
+Dizide kac eleman olacagini giriniz: 
+3
+
+Dizinin elemanlarini giriniz:
+2
+4
+6
+
+Dizideki elemanlarin toplami: 12
+
+
+-------------------------------------------------------------------------------------
+
+
+Yapılacak adımlar (2)
+
+- Bu çalışmada islem cogaltmayi (fork) uygulayacagiz.
+
+- Aşağıda belirtilen operasyonları gerçekleştiren bir C programı yazınız. Dosya adi "calisma_2.c" olmalidir.
+
+- Programınız; 
+
+- fork() fonksiyonunu 3 kere art arda cagiracaktir.
+
+- fork'larin hemen ardinda ekrana "Merhaba dunya" yazmak icin printf fonsiyonu cagiracaktir.
+
+- ekranda kac tane "Merhaba dunya" yazisi goruyorsunuz?
+
+-------------------------------------------------------------------------------------
+
+
+Yapılacak adımlar (3)
+
+- Bu çalışmada islem kontrolunu uygulayacagiz.
+
+- Aşağıda belirtilen operasyonları gerçekleştiren bir C programı yazınız. Dosya adi "calisma_3.c" olmalidir.
+
+- Programınız; 
+
+- Ekrana "Ben ust islemim ve numaram X" yazacaktir (getpid()).
+
+- fork() ile islem ikiye ayrilacaktir (ust islem ve cocuk islem).
+
+- Eger cocuk islem alanindaysa ekrana "Ben cocuk islemim, numaram X, ust islem numaram Y." yazacaktir (getpid(), getppid()).
+
+- Eger cocuk islem alanindaysa herhangi bir cikis kodu ile sonlanacaktir (exit(Z)).
+
+- Eger ust islem alanindaysa ekrana "Ben ust islemim, numaram A, ust islem numaram B." yazacaktir. 
+
+- Eger ust islem alanindaysa cocuk islemin sonlanmasini bekleyecektir (wait(int *status)).
+
+- Eger ust islem alanindaysa ekrana "Numarasi X olan cocuk Z cikis kodu ile sonlandi." yazacaktir.
+
+- Sonlanmadan once ekrana "K numarali islem sonlaniyor." yazacak ve sonlanacaktir.
+
+
+Ornek: 
+
+Ben ust islemim ve numaram 2735
+Ben ust islemim, numaram 2735, ust islem numaram 2717.
+Ben cocuk islemim, numaram 2736, ust islem numaram 2735.
+Numarasi 2736 olan cocuk 42 cikis kodu ile sonlandi.
+2736 numarali islem sonlaniyor.

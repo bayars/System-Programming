@@ -1,0 +1,31 @@
+Yapılacak adımlar
+- Yanda belirtilen isimde bir klasör oluşturunuz “isminiz-soyİsminiz-Calisma3”
+- Yeni oluşturulan klasöre gidiniz.
+- Aşağıda belirtilen operasyonları gerçekleştiren “prog3” isminde bir C programı yazınız. Programınızın kaynak dosyasını “prog3.c” ismiyle kaydediniz.
+	- Programınız argüman olarak bir dosya ismi alacaktır. Bu dosyayı önceden oluşturmalı ve içerisine metin girmelisiniz.
+		- Dosya ismi verilmez ise, programınız anlamlı bir hata mesajı vererek sonlanacaktır.
+- Programınız verilen dosyayı açmaya çalışacaktır.
+		- Dosya açılamaz ise, programınız anlamlı bir hata mesajı vererek sonlanacaktır.
+- Programınız açılan dosyadaki metin ile ilgili aşağıda belirtilen istatistikleri hesaplayacaktır:
+	- Satır sayısı
+	- Kelime sayısı	
+- Programınız, hesaplanan istatistiklerin raporlanabilmesi için, “istatistik.txt” isimli bir dosya oluşturacak ve yukarıda belirtilen bilgileri bu dosyaya yazacaktır.
+- Son olarak programınız açılan iki dosyayı kapatarak sonlanacaktır.
+
+Örnek: Girdi olarak verilen dosyanın içeriği aşağıdaki gibi ise:
+
+Bu bir metin dosyasıdır. Benim tarafımdan
+yazılmıştır.
+
+“istatistik.txt” dosyasının içeriği şu şekilde olmalıdır:
+
+Satir sayisi: 2
+Kelime sayisi: 7
+
+İpuçları: 
+- Bir char dizisine formatlı bir metin yazmak için sprintf(2) kullanılabilir.
+n = sprintf(buff,"Benim sayi %d\n", 5);
+Bu şekilde çalıştırıldığında n sayısı buff dizisine yazılan byte sayısını verir.
+- Kullanacağınız fonksiyonların tamamı stdio kütüphanesinde bulunmaktadır.
+- “dosya.txt” isimli bir dosyayı sadece okumak için aşağıda şekilde açabiliriz.
+FILE *infile = fopen(“dosya.txt”, "r");

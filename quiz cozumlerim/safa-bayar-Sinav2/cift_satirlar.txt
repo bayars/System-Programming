@@ -1,0 +1,4 @@
+
+bu ikinci satir.
+bu dorduncu satir.
+Bu altinci satir.

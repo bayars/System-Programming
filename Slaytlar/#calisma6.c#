@@ -17,7 +17,7 @@ int main(int argc, char const *argv[])
 		exit(42);
 	}
 	else  
-	{
+	  {
 		printf("Ben ust islemim, numaram %d, ust islem numaram %d.\n", getpid(), getppid());
 		child_pid = wait(&status);
 		

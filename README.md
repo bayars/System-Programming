@@ -1,9 +1,9 @@
-# Sistem Programlama
+# System Programming
 
-Okulda gördüğümüz sistem programlama notlarını açıklamalarıyla paylaşıyorum.
+I shared the system programming lectures notes and exams. All code wrote c so that compiled with gcc. You can compile with that way:
 
+```
+gcc <ProgramName> -o out -pthread 
+```
 
-Sistem Programlama dersinde olan quiz sorularini ve kendi calismalarimi da ekledim. 
-
-
-Donum sonu geldi ve son guncelleme yaptim.
+Additionally, I added my teacher notes in the directories but the notes in Turkish language. You can investigate the codes in the notes.
